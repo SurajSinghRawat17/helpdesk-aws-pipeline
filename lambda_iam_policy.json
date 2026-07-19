@@ -1,0 +1,46 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGlueCrawlerControl",
+      "Effect": "Allow",
+      "Action": [
+        "glue:StartCrawler",
+        "glue:GetCrawler",
+        "glue:StopCrawler"
+      ],
+      "Resource": "arn:aws:glue:*:*:crawler/helpdesk-raw-crawler"
+    },
+    {
+      "Sid": "AllowGlueJobControl",
+      "Effect": "Allow",
+      "Action": [
+        "glue:StartJobRun",
+        "glue:GetJobRun"
+      ],
+      "Resource": "arn:aws:glue:*:*:job/helpdesk-etl-job"
+    },
+    {
+      "Sid": "AllowS3Read",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name",
+        "arn:aws:s3:::your-bucket-name/*"
+      ]
+    },
+    {
+      "Sid": "AllowCloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    }
+  ]
+}
